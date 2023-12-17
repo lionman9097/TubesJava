@@ -53,14 +53,15 @@ public void actionPerformed(ActionEvent e){
         {
             File myObj = new File("datauser.txt");
             Scanner myReader = new Scanner(myObj);
+            
             while (myReader.hasNextLine())
             {
                 String data = myReader.nextLine();
-                if (userInput == data) 
+                if (userInput.equals(data)) 
                 {
                     userFound = true;
                 }
-                if (passInput == data) 
+                if (passInput.equals(data)) 
                 {
                     passFound = true;
                 }
@@ -76,25 +77,34 @@ public void actionPerformed(ActionEvent e){
             d = new JDialog(frame, "Login");
  
             // create a label
-            JLabel l = new JLabel("Login berhasil");
+            JLabel l = new JLabel("Login Berhasil");
+            l.setBounds(75, 100, 150, 50);
             JButton buttond = new JButton("Ok");
+            
+            buttond.setBounds(75, 150, 100, 50);
             buttond.addActionListener(new ActionListener() 
             {
                 public void actionPerformed(ActionEvent e) 
                 {
-                    d.dispose(); 
+                    d.dispose();
+                    frame.dispose();
+                    new MenuUser();
                 }
             });
+            JPanel paneld = new JPanel();
  
-            d.add(l);
-            d.add(buttond);
+            paneld.add(l);
+            paneld.add(buttond);
+            d.getContentPane().add(paneld);
  
             // setsize of dialog
-            d.setSize(100, 100);
+            d.setSize(200, 100);
             
  
             // set visibility of dialog
             d.setVisible(true);
+
+           
 
         }else
         {
